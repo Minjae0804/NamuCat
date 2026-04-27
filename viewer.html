@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Namu Universal Viewer</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        overflow: hidden;
+      }
+      #header {
+        padding: 15px;
+        background: #373a3c;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      #target-url {
+        flex: 1;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+      }
+      #load-btn {
+        padding: 10px 20px;
+        cursor: pointer;
+        background: #00a495;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      #main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+      #sidebar {
+        width: 320px;
+        border-right: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        background: #f8f9fa;
+      }
+      #search-container {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      #menu-search {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      #doc-title-container {
+        padding: 12px 15px;
+        background: #ececec;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+        color: #333;
+        font-size: 14px;
+      }
+      #menu-list {
+        flex: 1;
+        overflow-y: auto;
+      }
+      .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .menu-item:hover {
+        background: #e9ecef;
+      }
+      .menu-item.active {
+        background: #00a495 !important;
+        color: white !important;
+      }
+      .toggle-btn {
+        width: 20px;
+        color: #00a495;
+        font-weight: bold;
+        margin-right: 5px;
+        text-align: center;
+      }
+      .menu-item.active .toggle-btn {
+        color: white;
+      }
+      .depth-h2 {
+        font-weight: bold;
+        padding-left: 5px;
+      }
+      .depth-h3 {
+        padding-left: 25px;
+      }
+      .depth-h4 {
+        padding-left: 45px;
+        color: #666;
+      }
+      .depth-h5 {
+        padding-left: 65px;
+        color: #888;
+        font-size: 12px;
+      }
+      .depth-h6 {
+        padding-left: 85px;
+        color: #aaa;
+        font-size: 11px;
+      }
+      #content-area {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+        line-height: 1.8;
+      }
+      #content-area img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+        font-size: 0.9em;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      h1 {
+        color: #00a495;
+        margin-top: 0;
+      }
+      .search-hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div style="color: #00a495; font-weight: bold; font-size: 1.2em">
+        NAMU
+      </div>
+      <input
+        type="text"
+        id="target-url"
+        placeholder="문서명 또는 문서의 URL을 입력하십시오."
+      />
+      <button id="load-btn">검색</button>
+    </div>
+    <div id="main">
+      <div id="sidebar">
+        <div id="search-container">
+          <input
+            type="text"
+            id="menu-search"
+            placeholder="현재 문서 내 문단 필터..."
+          />
+        </div>
+        <div id="doc-title-container">문서명</div>
+        <div id="menu-list"></div>
+      </div>
+      <div id="content-area">
+        <div id="content-body">불러온 문서가 없습니다.</div>
+      </div>
+    </div>
+    <script src="viewer.js"></script>
+  </body>
+</html>

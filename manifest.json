@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "NamuCat",
+  "version": "1.7",
+  "permissions": ["scripting", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Namucat"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
